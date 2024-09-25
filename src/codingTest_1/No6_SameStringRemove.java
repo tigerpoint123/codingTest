@@ -1,8 +1,6 @@
 package codingTest_1;
 
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 
 /**
  * 소문자로 된 한개의 문자열이 입력되면 중복된 문자를 제거하고 출력하는 프로그램을 작성하세요.
@@ -13,7 +11,7 @@ import java.util.Set;
  */
 
 
-public class No6SameStringRemove {
+public class No6_SameStringRemove {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
