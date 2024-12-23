@@ -2,11 +2,12 @@ package programmers.Lv1;
 
 public class VideoPlayer {
     public static void main(String[] args) {
-        String video_len = "34:33";
-        String pos = "13:00";
-        String op_start = "00:55";
-        String op_end = "02:55";
-        String[] commands = {"next", "prev"};
+        String video_len = "10:00";
+        String pos = "07:05";
+        String op_start = "01:00";
+        String op_end = "01:30";
+        // 기댓값 : 06:55
+        String[] commands = {"prev"};
 
         String[] position = pos.split(":");
         String pos_min = position[0];
@@ -31,53 +32,61 @@ public class VideoPlayer {
         int video_len_min_int = Integer.parseInt(video_len_min);
         int video_len_sec_int = Integer.parseInt(video_len_sec);
 
-        if ((pos_min_int < op_end_min_int && pos_min_int > op_start_min_int) ||
-                (pos_min_int == op_start_min_int && pos_sec_int > op_start_sec_int) ||
-                (pos_min_int == op_end_min_int && pos_sec_int < op_end_sec_int)) {
-            pos_min_int = op_end_min_int;
-            pos_sec_int = op_end_sec_int;
-        }
 
-        for (
-                String command : commands) {
-            if (command.equals("next")) {
+
+        for(String command : commands) {
+            if((pos_min_int < op_end_min_int && pos_min_int > op_start_min_int) ||
+//                    (pos_min_int == op_start_min_int && pos_sec_int >= op_start_sec_int) ||
+                    (pos_min_int == op_end_min_int && pos_sec_int <= op_end_sec_int)) {
+
+                pos_min_int = op_end_min_int;
+                pos_sec_int = op_end_sec_int;
+            }
+            if((pos_min_int > video_len_min_int) ||
+                    (pos_min_int == video_len_min_int && pos_sec_int > video_len_sec_int)){
+                pos_min_int = video_len_min_int;
+                pos_sec_int = video_len_sec_int;
+            }
+
+            if(command.equals("next")) {
                 pos_sec_int += 10;
-                if (pos_sec_int > 60) {
+                if(pos_sec_int >= 60) {
                     pos_sec_int -= 60;
-                    pos_min_int++;
+                    pos_min_int ++;
                 }
+
             } else {
                 pos_sec_int -= 10;
-                if (pos_sec_int < 0 && pos_min_int == 0) {
+                if(pos_sec_int < 0 && pos_min_int == 0) {
                     pos_sec_int = 0;
                     pos_min_int = 0;
-                } else if (pos_min_int > 0 && pos_sec_int < 0) {
-                    pos_min_int--;
+                } else if(pos_min_int > 0 && pos_sec_int < 0) {
+                    pos_min_int --;
                     pos_sec_int += 60;
+                }
+
+                if((pos_min_int < op_end_min_int && pos_min_int > op_start_min_int) ||
+//                        (pos_min_int == op_start_min_int && pos_sec_int >= op_start_sec_int) ||
+                        (pos_min_int == op_end_min_int && pos_sec_int <= op_end_sec_int)) {
+
+                    pos_min_int = op_end_min_int;
+                    pos_sec_int = op_end_sec_int;
                 }
             }
         }
 
-        if ((pos_min_int < op_end_min_int && pos_min_int > op_start_min_int) ||
-                (pos_min_int == op_start_min_int && pos_sec_int > op_start_sec_int) ||
-                (pos_min_int == op_end_min_int && pos_sec_int < op_end_sec_int)) {
-            pos_min_int = op_end_min_int;
-            pos_sec_int = op_end_sec_int;
-        }
-
-        if ((pos_min_int > video_len_min_int) ||
-                (pos_min_int == video_len_min_int && pos_sec_int > video_len_sec_int)) {
+        if((pos_min_int > video_len_min_int) ||
+                (pos_min_int == video_len_min_int && pos_sec_int > video_len_sec_int)){
             pos_min_int = video_len_min_int;
             pos_sec_int = video_len_sec_int;
         }
 
-        res_pos_min = String.format("%02d", pos_min_int);
-        if (pos_sec_int == 0) res_pos_sec = "00";
-        else res_pos_sec = String.valueOf(pos_sec_int);
+        res_pos_min = String.format("%02d",pos_min_int);
+        if(pos_min_int == 0) res_pos_min = "00";
+        if(pos_sec_int == 0) res_pos_sec = "00";
+        else res_pos_sec = String.format("%02d",pos_sec_int);
 
         String answer = res_pos_min + ":" + res_pos_sec;
         System.out.println(answer);
-
     }
-
 }
