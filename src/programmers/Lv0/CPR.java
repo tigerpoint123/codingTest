@@ -1,4 +1,4 @@
-package Lv0;
+package programmers.Lv0;
 
 public class CPR {
     public int[] solution(String[] cpr) {

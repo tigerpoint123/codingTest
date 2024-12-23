@@ -1,4 +1,4 @@
-package codingTest_1;
+package inflearn_codingTest.codingTest_1;
 
 
 import java.util.Scanner;

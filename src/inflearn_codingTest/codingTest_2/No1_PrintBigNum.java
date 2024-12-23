@@ -1,4 +1,4 @@
-package codingTest_2;
+package inflearn_codingTest.codingTest_2;
 
 
 import java.util.ArrayList;
