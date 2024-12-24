@@ -1,4 +1,4 @@
-package programmers.Lv1;
+package programmers.Lv1.videoPlayer;
 
 public class VideoPlayer {
     public static void main(String[] args) {

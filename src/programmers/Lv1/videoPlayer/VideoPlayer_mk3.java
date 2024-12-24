@@ -1,13 +1,13 @@
-package programmers.Lv1;
+package programmers.Lv1.videoPlayer;
 
 public class VideoPlayer_mk3 {
     public static void main(String[] args) {
-        String video_len = "10:55";
-        String pos = "00:05";
-        String op_start = "00:15";
-        String op_end = "06:55";
-        // 기댓값 : 00:07
-        String[] commands = {"prev", "next", "next"};
+        String video_len = "10:00";
+        String pos = "10:00";
+        String op_start = "01:00";
+        String op_end = "02:00";
+        // 기댓값 : 09:50
+        String[] commands = {"next", "prev"};
 
         String[] position = pos.split(":");
         String pos_min = position[0];
@@ -56,6 +56,7 @@ public class VideoPlayer_mk3 {
             if (pos_len >= op_start_len && pos_len <= op_end_len) {
                 pos_len = op_end_len;
             }
+            if(pos_len > video_len_len) pos_len = video_len_len;
         }
 
         if (pos_len >= op_start_len && pos_len <= op_end_len) {
