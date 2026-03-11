@@ -1,0 +1,3 @@
+1. Class 명 Main으로 변경
+2. 필요없는 sysout을 전부 지우기
+3. 맨 위 package 지우기
