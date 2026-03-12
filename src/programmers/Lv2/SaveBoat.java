@@ -7,37 +7,32 @@ import java.util.List;
 
 public class SaveBoat {
     public static void main(String[] args) {
-        int[] people = {70, 80, 40};
-        System.out.println(solution(people, 120)); // 3
+        int[] people = {70, 80, 50};
+        System.out.println(solution(people, 100)); // 3
     }
 
     public static int solution(int[] people, int limit) {
         int answer = 0;
-        List<Integer> peopleList = new ArrayList<>();
-        List<Integer> answerList = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         Arrays.sort(people);
-        for (int i = people.length -1; i >= 0; i--) {
-            peopleList.add(people[i]);
-        }
-        int peopleSize = peopleList.size();
+        int left = 0;
+        int right = people.length - 1;
 
-        for (int i = 0; i < peopleSize; i ++) { // 80 70 50 50
-            int temp = peopleList.get(i);
-
-            for (int j = i + 1; j < peopleSize; j++) {
-                if (temp + peopleList.get(j) <= limit) {
-                    temp += peopleList.get(j);
-                    peopleList.set(j, 0);
-                }
+        for(int i = 0; i<people.length; i++){
+            if(left > right){
+                break;
             }
-            answerList.add(temp);
-        }
 
-        for (Integer integer : answerList) {
-            if (!integer.equals(0)) {
-                answer++;
+            if (people[left] + people[right] <= limit) {
+                list.add(people[left] + people[right]);
+                left++;
+                right--;
+            } else {
+                list.add(people[right]);
+                right--;
             }
         }
+        answer = list.size();
         return answer;
     }
 }
