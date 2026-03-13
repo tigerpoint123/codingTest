@@ -1,4 +1,4 @@
-package baekjoon;
+package baekjoon.stage2;
 
 import java.util.Arrays;
 import java.util.Scanner;

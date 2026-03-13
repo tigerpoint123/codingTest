@@ -1,7 +1,7 @@
 package programmers.Lv2;
 
 public class DragMonitor {
-    public static void main(String[] args) {
+    public static void main(String[] args) { // 풀이중
         String[] wallpaper = {"..........", ".....#....", "......##..", "...##.....", "....#....."};
         /*
         ..........
